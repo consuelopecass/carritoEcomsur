@@ -45,11 +45,11 @@ const agregarCarrito = (id) => {
     let checkPelicula = carrito.find(carrito => carrito.id === id)
     if (checkPelicula === undefined) {
         carrito.push({
-                id: miPelicula.imdbID,
-                titulo: miPelicula.Title,
-                cantidad: 1
-            })
-            //acá agrego () para inyectar la peli al carrito
+            id: miPelicula.imdbID,
+            titulo: miPelicula.Title,
+            cantidad: 1
+        })
+        inyectarPelicula()
     } else {
         carrito.map(pelicula => {
             if (pelicula.id === id) {
@@ -58,4 +58,44 @@ const agregarCarrito = (id) => {
         })
     }
     console.log(carrito)
+}
+
+const inyectarPelicula = () => {
+    const tabla = document.querySelector('#tabla')
+    tabla.innerHTML = ''
+    alert('HOLA')
+    carrito.forEach(pelicula => {
+        console.log(pelicula)
+        var html = ''
+        html += `<div class="item">
+                        <div class="info">
+                            <h3> Titulo: ${pelicula.titulo}</h3>
+                            <p> Cantidad: ${pelicula.cantidad}</p>
+                            <button onclick="aumentar('${pelicula.id}')">+</button>
+                            <button onclick="disminuir('${pelicula.id}')">-</button>
+                        </div>
+                    </div>`
+        tabla.innerHTML += html
+    })
+    console.log()
+}
+
+const aumentar = (id) => {
+    carrito.map(pelicula => {
+        if (pelicula.id === id) {
+            pelicula.cantidad++
+        }
+    })
+    inyectarPelicula()
+}
+
+const disminuir = (id) => {
+    carrito.map(pelicula => {
+        if (pelicula.cantidad === 1 && pelicula.id === id) {
+            carrito.splice(carrito.indexOf(pelicula), 1)
+        } else if (pelicula.id === id) {
+            pelicula.cantidad--
+        }
+    })
+    inyectarPelicula()
 }
