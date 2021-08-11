@@ -11,13 +11,42 @@
 
 <body>
 
-    <div></div>
-    <div>
-        <input type="text" id="busqueda">
-        <button onclick="fetchData()">Traer Peliculas</button>
-        <div id="contenido"></div>
-    </div>
-    <div id="tabla"></div>
+    <nav class="navbar">
+        <img src="assets/img/icons8-streaming-movies-64.png" alt="Logo películas gratis">
+        <div class="navbarText">
+            <h1>Películas, Series y Videojuegos Online Gratis</h1>
+        </div>
+    </nav>
+
+    <!-- Inicio Main -->
+    <main class="main">
+        <div class="main_imagen">
+            <img src="assets/img/cinema.jpeg" alt="Imagen cine peliculas gratis">
+        </div>
+        <div class="buscador">
+            <input class="input_busqueda" type="text" id="busqueda" placeholder="Ingresa tu pelicula/serie o videojuego">
+            <button class="boton_busqueda" onclick="fetchData()">Buscar</button>
+            <!-- Inyección tabla -->
+            <div class="contenedor_tabla">
+                <div>
+                    <h4>¡Articulos agregados a tu carrito!</h4>
+                    <div id="tabla"></div>
+                </div>
+                <button class="boton_comprar" onclick="comprar()">Comprar</button>
+            </div>
+
+            <!-- Inyección contenido -->
+            <div id="contenido"></div>
+        </div>
+
+    </main>
+    <!-- Fin Main -->
+
+    <!-- Inicio Footer -->
+    <footer class="footer">
+        <small>&copy; 2021 | Consuelo Peña Sepúlveda | Todos los derechos reservados</small>
+    </footer>
+    <!-- Fin Footer -->
 
     <script src="./assets/js/index.js"></script>
 </body>

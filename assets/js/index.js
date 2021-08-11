@@ -29,7 +29,7 @@ const inyectarCards = data => {
                             <p> Tipo: ${item.Type}</p>
                         </div>
                         <div class="contenedorBoton">
-                        <button id="comprar" onclick="agregarCarrito('${item.imdbID}')" class="">Comprar</button>
+                        <button class="boton_comprar" id="comprar" onclick="agregarCarrito('${item.imdbID}')" class="">Comprar</button>
                         </div>
                     </div>`
     }
@@ -37,7 +37,7 @@ const inyectarCards = data => {
 }
 
 const agregarCarrito = (id) => {
-    alert('me agregaste!')
+    alert('producto agregado a tu carrito!')
     let miPelicula = peliculas.find(pelicula => pelicula.imdbID === id)
     console.log(id)
     console.log(miPelicula)
@@ -63,7 +63,6 @@ const agregarCarrito = (id) => {
 const inyectarPelicula = () => {
     const tabla = document.querySelector('#tabla')
     tabla.innerHTML = ''
-    alert('HOLA')
     carrito.forEach(pelicula => {
         console.log(pelicula)
         var html = ''
@@ -71,8 +70,8 @@ const inyectarPelicula = () => {
                         <div class="info">
                             <h3> Titulo: ${pelicula.titulo}</h3>
                             <p> Cantidad: ${pelicula.cantidad}</p>
-                            <button onclick="aumentar('${pelicula.id}')">+</button>
-                            <button onclick="disminuir('${pelicula.id}')">-</button>
+                            <button class="boton_carrito" onclick="aumentar('${pelicula.id}')">+</button>
+                            <button class="boton_carrito" onclick="disminuir('${pelicula.id}')">-</button>
                         </div>
                     </div>`
         tabla.innerHTML += html
@@ -98,4 +97,8 @@ const disminuir = (id) => {
         }
     })
     inyectarPelicula()
+}
+
+const comprar = () => {
+    alert('Comprando...')
 }
